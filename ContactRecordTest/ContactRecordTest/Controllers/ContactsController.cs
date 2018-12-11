@@ -26,6 +26,12 @@ namespace ContactRecordTest.Controllers
         {
             return Ok(await contactDomain.GetAllContacts());
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetContactById(string id)
+        {
+            return Ok(await contactDomain.GetContactById(id));
+        }
         
         // POST: api/Contacts
         [HttpPost]
