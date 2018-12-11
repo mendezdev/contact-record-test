@@ -41,11 +41,11 @@ namespace ContactRecordTest.Domain.Implement
             return context.Contacts.Find(filter).FirstOrDefaultAsync();
         }
 
-        public async Task<bool> Update(Contact contact)
+        public async Task<bool> Update(string id, Contact contact)
         {
             ReplaceOneResult updateResult = await context
                 .Contacts.ReplaceOneAsync(
-                    filter: c => c.Id == contact.Id,
+                    filter: c => c.Id == id,
                     replacement: contact);
 
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;

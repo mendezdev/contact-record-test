@@ -11,7 +11,7 @@ namespace ContactRecordTest.Domain
         Task<IEnumerable<Contact>> GetAllContacts();
         Task<Contact> GetContactById(string id);
         Task Create(Contact contact);
-        Task<bool> Update(Contact contact);
+        Task<bool> Update(string id, Contact contact);
         Task<bool> Delete(string id);
     }
 }
