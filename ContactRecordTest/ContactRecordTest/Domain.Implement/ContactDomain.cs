@@ -43,6 +43,7 @@ namespace ContactRecordTest.Domain.Implement
 
         public async Task<bool> Update(string id, Contact contact)
         {
+            contact.Id = id;
             ReplaceOneResult updateResult = await context
                 .Contacts.ReplaceOneAsync(
                     filter: c => c.Id == id,

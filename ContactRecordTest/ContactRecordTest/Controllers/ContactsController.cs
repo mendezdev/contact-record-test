@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ContactRecordTest.Domain;
 using ContactRecordTest.Models;
@@ -38,7 +39,15 @@ namespace ContactRecordTest.Controllers
         public async Task<IActionResult> Post([FromBody]Contact contact)
         {
             await contactDomain.Create(contact);
+            return StatusCode((int)HttpStatusCode.Created, contact);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, [FromBody]Contact contact)
+        {
+            var result = await contactDomain.Update(id, contact);
+
             return Ok();
-        }               
+        }
     }
 }
